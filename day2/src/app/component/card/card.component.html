@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col pt-3" *ngFor="let post of postArr; index as i">
+      <div
+        class="card"
+        id="cardt"
+        style="
+          width: 20rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div class="card-image">
+          <img
+            [attr.src]="post.image"
+            class="w-100 card-img-top img-post"
+            alt="AngularCard"
+          />
+        </div>
+
+        <div id="cardtitle" class="my-3">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="date">Date: {{ post.createdAt }}</p>
+        </div>
+
+        <div class="card-body" id="cardb">
+          <div class="container">
+            <div class="row">
+              <div class="col d-flex justify-content-between pb-2">
+                <div id="postCreator">
+                  <span>{{ post.creator.name }}</span>
+                  <span
+                    class="available rounded-cirlce"
+                    [style.background-Color]="
+                      post.creator.isOnline ? 'green' : 'red'
+                    "
+                  ></span>
+                </div>
+                <span>{{ post.creator.followers }} K</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col d-flex justify-content-between pb-2">
+                <a
+                  href="#"
+                  class="btn btn-outline-danger"
+                  *ngIf="post.creator.isFollowing; else follow"
+                  >Unfollow</a
+                >
+                <ng-template #follow>
+                  <a href="#" class="btn btn-outline-primary">Follow</a>
+                </ng-template>
+                <span>{{ post.likes }} K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

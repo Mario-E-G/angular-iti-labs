@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div
+      *ngFor="let post of postInfo; index as i"
+      class="card my-2 mx-2 text-center align-items:center bg-warning text-dark"
+      id="cardt"
+      style="
+        width: 100rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <div class="card-body" id="cardb">
+        <div class="row">
+          <div class="col">
+            <h3>Comment id : {{ post.id }}</h3>
+            <h5>Name : {{ post.name | titlecase }}</h5>
+            <h5>Email : {{ post.email }}</h5>
+          </div>
+
+          <div class="row"></div>
+          <div class="col d-flex justify-content-between pb-2">
+            <span>{{ post.body }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

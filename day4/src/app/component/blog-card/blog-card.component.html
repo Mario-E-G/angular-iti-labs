@@ -1,0 +1,74 @@
+<div
+  class="card"
+  id="cardt"
+  style="
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  "
+>
+  <div class="card-image">
+    <img
+      [src]="post.image"
+      class="w-100 card-img-top img-post"
+      alt="AngularCard"
+    />
+  </div>
+
+  <div id="cardtitle" class="my-3">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="date">Date: {{ post.createdAt }}</p>
+  </div>
+
+  <div class="card-body" id="cardb">
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-between pb-2">
+          <div id="postCreator">
+            <span>{{ post.creator.name }}</span>
+            <span
+              class="available rounded-cirlce"
+              [style.background-Color]="post.creator.isOnline ? 'green' : 'red'"
+            ></span>
+          </div>
+          <span>{{ post.creator.followers }} K</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-between pb-2">
+          <a
+            class="btn"
+            [class]="
+              post.creator.isFollowing
+                ? 'btn-outline-danger'
+                : 'btn-outline-primary'
+            "
+            (click)="changeFollow(post)"
+            >{{ post.creator.isFollowing ? "Unfollow" : "Follow" }}</a
+          >
+          <ng-template id="ngFollow" #follow>
+            <a class="btn btn-outline-primary">{{ follow }}</a>
+          </ng-template>
+          <span>{{ post.likes }} K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div class="row">
+  <div class="col d-flex justify-content-between pb-2">
+    <a
+      class="btn btn-outline-danger"
+      (click)="changeFollow(post)"
+      *ngIf="follow; else following"
+      >Unfollow</a
+    >
+    <ng-template #following>
+      <a href="#" class="btn btn-outline-primary">Follow</a>
+    </ng-template>
+    <span>{{ post.likes }} K</span>
+  </div>
+</div> -->
